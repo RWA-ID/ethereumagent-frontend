@@ -1,0 +1,14 @@
+{
+  "localhost": {
+    "AgentNFT": "0x8a791620dd6260079bf849dc5567adc3f2fdc318",
+    "PerformanceOracle": "0x610178da211fef7d417bc0e6fed39f05609ad788",
+    "AgentMarketplace": "0xb7f8bc63bbcad18155201308c8f3540b07f84f5e"
+  },
+  "sepolia": {
+    "AgentNFT": "0xfb9e9d405d4a8a628fd45d33e672d27b07fad902",
+    "PerformanceOracle": "0xfd353ecf66bb0f0cf1c4545002c2fd4930b9992d",
+    "AgentMarketplace": "0x3617e18279e09a2a2f1473b7cb13cd027c7937db",
+    "deployedAt": "2026-02-07T04:17:56.894Z",
+    "deployer": "0x5f11a48230f7CdaB91A2361576239091E4b1165b"
+  }
+}
