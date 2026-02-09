@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePublicClient } from 'wagmi';
 import { CONTRACTS } from '@/contracts';
 import { DEPLOYMENT_BLOCK } from '@/contracts/addresses';
+import { getContractEventsChunked } from '@/lib/chunkedLogs';
 
 export function useAgentDiscovery() {
   const publicClient = usePublicClient();
@@ -18,12 +19,11 @@ export function useAgentDiscovery() {
 
     (async () => {
       try {
-        const logs = await publicClient.getContractEvents({
+        const logs = await getContractEventsChunked(publicClient, {
           address: CONTRACTS.agentNFT.address,
           abi: CONTRACTS.agentNFT.abi as any,
           eventName: 'AgentMinted',
           fromBlock: DEPLOYMENT_BLOCK,
-          toBlock: 'latest',
         });
 
         if (cancelled) return;

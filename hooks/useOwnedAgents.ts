@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAccount, usePublicClient } from 'wagmi';
 import { CONTRACTS } from '@/contracts';
 import { DEPLOYMENT_BLOCK } from '@/contracts/addresses';
+import { getContractEventsChunked } from '@/lib/chunkedLogs';
 
 export function useOwnedAgents() {
   const { address } = useAccount();
@@ -23,21 +24,19 @@ export function useOwnedAgents() {
     (async () => {
       try {
         const [incomingLogs, outgoingLogs] = await Promise.all([
-          publicClient.getContractEvents({
+          getContractEventsChunked(publicClient, {
             address: CONTRACTS.agentNFT.address,
             abi: CONTRACTS.agentNFT.abi as any,
             eventName: 'Transfer',
             args: { to: address },
             fromBlock: DEPLOYMENT_BLOCK,
-            toBlock: 'latest',
           }),
-          publicClient.getContractEvents({
+          getContractEventsChunked(publicClient, {
             address: CONTRACTS.agentNFT.address,
             abi: CONTRACTS.agentNFT.abi as any,
             eventName: 'Transfer',
             args: { from: address },
             fromBlock: DEPLOYMENT_BLOCK,
-            toBlock: 'latest',
           }),
         ]);
 

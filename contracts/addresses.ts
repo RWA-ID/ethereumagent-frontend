@@ -6,5 +6,5 @@ export const ADDRESSES = {
   marketplace: "0x3617e18279e09a2a2f1473b7cb13cd027c7937db",
 } as const;
 
-// Approximate Sepolia block at deployment time (Feb 7 2026)
-export const DEPLOYMENT_BLOCK = 7_800_000n;
+// AgentNFT deployed at Sepolia block 10_208_087
+export const DEPLOYMENT_BLOCK = 10_208_080n;
